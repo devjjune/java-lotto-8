@@ -2,11 +2,13 @@ package lotto;
 
 import lotto.view.InputView;
 
+import java.util.List;
+
 public class Controller {
     public static void run() {
-        InputView.readPurchaseAmount();
-        InputView.readWinningNumber();
-        InputView.readBonusNumber();
+        String purchaseAmount = InputView.readPurchaseAmount();
+        String winningNumber = InputView.readWinningNumber();
+        String bonusNumber = InputView.readBonusNumber();
 
     }
 
