@@ -8,6 +8,7 @@ public class InputView {
     public static final String bonusNumberMessage = "보너스 번호를 입력해 주세요.";
 
     public static String readPurchaseAmount() {
+        System.out.println();
         System.out.println(purchaseAmountMessage);
         String purchaseAmount = Console.readLine();
 
@@ -16,6 +17,7 @@ public class InputView {
     }
 
     public static String readWinningNumber() {
+        System.out.println();
         System.out.println(winningNumberMessage);
         String winningNumber = Console.readLine();
 

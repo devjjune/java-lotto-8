@@ -8,7 +8,6 @@ public class OutputView {
         System.out.println();
         System.out.println(issuedAmount + "개를 구매했습니다.");
         issuedLottos.forEach(lottos -> System.out.println(lottos));
-        System.out.println();
 
     }
 
