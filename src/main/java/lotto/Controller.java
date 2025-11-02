@@ -9,6 +9,8 @@ import lotto.view.OutputView;
 import java.util.List;
 import java.util.Map;
 
+import lotto.model.Yields;
+
 public class Controller {
     public static void run() {
         String purchaseAmount = InputView.readPurchaseAmount();
@@ -22,6 +24,10 @@ public class Controller {
         int bonusWinningNumber = Integer.parseInt(InputView.readBonusNumber());
         List<Integer> winningLottos = WinningLotto.makeLotto(winningNumber);
         Map<WinningRank, Integer> results = WinningLotto.compareLotto(issuedLottos, winningLottos, bonusWinningNumber);
+
+        int totalRevenue = Yields.calculateTotalRevenue(results);
+        double profitRate = Yields.calculateYields(totalRevenue, purchaseAmount);
+
 
     }
 
