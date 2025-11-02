@@ -1,10 +1,13 @@
 package lotto;
 
 import lotto.model.Lotto;
+import lotto.model.WinningLotto;
+import lotto.model.WinningRank;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
 import java.util.List;
+import java.util.Map;
 
 public class Controller {
     public static void run() {
@@ -16,7 +19,9 @@ public class Controller {
         OutputView.printIssuedLottos(issuedLottos);
 
         String winningNumber = InputView.readWinningNumber();
-        String bonusNumber = InputView.readBonusNumber();
+        int bonusWinningNumber = Integer.parseInt(InputView.readBonusNumber());
+        List<Integer> winningLottos = WinningLotto.makeLotto(winningNumber);
+        Map<WinningRank, Integer> results = WinningLotto.compareLotto(issuedLottos, winningLottos, bonusWinningNumber);
 
     }
 
