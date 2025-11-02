@@ -28,6 +28,8 @@ public class Controller {
         int totalRevenue = Yields.calculateTotalRevenue(results);
         double profitRate = Yields.calculateYields(totalRevenue, purchaseAmount);
 
+        OutputView.printStatistics(results, profitRate);
+
 
     }
 
