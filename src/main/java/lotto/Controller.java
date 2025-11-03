@@ -23,10 +23,8 @@ public class Controller {
         String winningNumber = InputView.readWinningNumber();
         String bonusNumber = InputView.readBonusNumber();
         WinningLotto winningLotto = service.drawWinningLotto(winningNumber, bonusNumber);
-        Comparator comparator = service.compareLottos(lottos, winningLotto);
 
-        int totalRevenue = Yields.calculateTotalRevenue(results);
-        double profitRate = Yields.calculateYields(totalRevenue, purchaseAmount);
+        Yields yields = service.calculateResults(purchaseAmount, lottos, winningLotto);
 
         OutputView.printStatistics(results, profitRate);
 

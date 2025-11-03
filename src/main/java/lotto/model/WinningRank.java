@@ -9,9 +9,9 @@ public enum WinningRank {
     FOURTH(4, false, 50_000),
     FIFTH(3, false, 5_000);
 
-    public final int matchCount;
-    public final boolean bonus;
-    public final int prize;
+    private final int matchCount;
+    private final boolean bonus;
+    private final int prize;
 
     WinningRank(int matchCount, boolean bonus, int prize) {
         this.matchCount = matchCount;
@@ -19,7 +19,23 @@ public enum WinningRank {
         this.prize = prize;
     }
 
-    public static WinningRank valueOf(int matchCount, boolean bonusMatch) {
+    public int getMatchCount() {
+        return matchCount;
+    }
+
+    public boolean isBonus() {
+        return bonus;
+    }
+
+    public int getPrize() {
+        return prize;
+    }
+
+    public static WinningRank of(int matchCount, boolean bonusMatch) {
+        return findRank(matchCount, bonusMatch);
+    }
+
+    private static WinningRank findRank(int matchCount, boolean bonusMatch) {
         for (WinningRank rank : values()) {
             if (rank.matchCount == matchCount && rank.bonus == bonusMatch) {
                 return rank;
