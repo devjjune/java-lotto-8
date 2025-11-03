@@ -22,28 +22,5 @@ public class Lotto {
     }
 
     // TODO: 추가 기능 구현
-    public static int calculateLottoAmount(String purchaseAmount) {
-        int lottoAmount = Integer.parseInt(purchaseAmount) / 1000;
 
-        return lottoAmount;
-    }
-
-    public static List<Integer> pickRandomNumbers() {
-        List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);
-
-        return randomNumbers;
-    }
-
-    public static List<List<Integer>> issueLottos(int lottoAmount, List<Integer> randomNumbers) {
-        List<List<Integer>> issuedLottos = new ArrayList<>();
-
-        for (int i = 0; i < lottoAmount; i++) {
-            randomNumbers = pickRandomNumbers();
-            Collections.sort(randomNumbers);
-            issuedLottos.add(randomNumbers);
-
-        }
-
-        return issuedLottos;
-    }
 }
