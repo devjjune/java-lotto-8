@@ -23,7 +23,7 @@ public class Controller {
         String winningNumber = InputView.readWinningNumber();
         String bonusNumber = InputView.readBonusNumber();
         WinningLotto winningLotto = service.drawWinningLotto(winningNumber, bonusNumber);
-        Map<WinningRank, Integer> results = WinningLotto.compareLotto(issuedLottos, winningLottos, bonusWinningNumber);
+        Comparator comparator = service.compareLottos(lottos, winningLotto);
 
         int totalRevenue = Yields.calculateTotalRevenue(results);
         double profitRate = Yields.calculateYields(totalRevenue, purchaseAmount);
