@@ -1,8 +1,5 @@
 package lotto.model;
 
-import lotto.view.InputView;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -10,16 +7,28 @@ import java.util.stream.Collectors;
 import java.util.EnumMap;
 
 public class WinningLotto {
+    private final List<Integer> winningNumber;
+    private final int bonusNumber;
 
-    public static List<Integer> makeLotto(String winningNumber) {
-        List<String> winningNumbers = Arrays.asList(winningNumber.split(","));
+    public WinningLotto(String winningNumber, String bonusNumber) {
+        this.winningNumber = parseWinningNumber(winningNumber);
+        this.bonusNumber = Integer.parseInt(bonusNumber);
+    }
 
-        List<Integer> winningLottos = winningNumbers.stream()
+    private List<Integer> parseWinningNumber(String winningNumber) {
+        return Arrays.stream(winningNumber.split(","))
+                .map(String::trim)
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
 
-        return winningLottos;
+    }
 
+    public List<Integer> getWinningNumbers() {
+        return List.copyOf(winningNumber);
+    }
+
+    public int getBonusNumber() {
+        return bonusNumber;
     }
 
     public static Map<WinningRank, Integer> compareLotto(List<List<Integer>> issuedLottos, List<Integer> winningLottos, int bonusWinningNumber) {

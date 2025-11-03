@@ -17,12 +17,12 @@ public class Controller {
     public void run() {
         String purchaseAmount = InputView.readPurchaseAmount();
 
-        Lottos lottos = Service.purchaseLottos(purchaseAmount);
+        Lottos lottos = service.purchaseLottos(purchaseAmount);
         OutputView.printIssuedLottos(issuedLottos);
 
         String winningNumber = InputView.readWinningNumber();
-        int bonusWinningNumber = Integer.parseInt(InputView.readBonusNumber());
-        List<Integer> winningLottos = WinningLotto.makeLotto(winningNumber);
+        String bonusNumber = InputView.readBonusNumber();
+        WinningLotto winningLotto = service.drawWinningLotto(winningNumber, bonusNumber);
         Map<WinningRank, Integer> results = WinningLotto.compareLotto(issuedLottos, winningLottos, bonusWinningNumber);
 
         int totalRevenue = Yields.calculateTotalRevenue(results);
