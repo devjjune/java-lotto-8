@@ -15,20 +15,24 @@ public class Controller {
     }
 
     public void run() {
-        String purchaseAmount = InputView.readPurchaseAmount();
+        try {
+            String purchaseAmount = InputView.readPurchaseAmount();
 
-        Lottos lottos = service.purchaseLottos(purchaseAmount);
-        OutputView.printIssuedLottos(lottos.getLottos());
+            Lottos lottos = service.purchaseLottos(purchaseAmount);
+            OutputView.printIssuedLottos(lottos.getLottos());
 
-        String winningNumber = InputView.readWinningNumber();
-        String bonusNumber = InputView.readBonusNumber();
+            String winningNumber = InputView.readWinningNumber();
+            String bonusNumber = InputView.readBonusNumber();
 
-        WinningLotto winningLotto = service.drawWinningLotto(winningNumber, bonusNumber);
+            WinningLotto winningLotto = service.drawWinningLotto(winningNumber, bonusNumber);
 
-        Yields yields = service.calculateResults(purchaseAmount, lottos, winningLotto);
+            Yields yields = service.calculateResults(purchaseAmount, lottos, winningLotto);
 
-        OutputView.printStatistics(yields.getRankCount(), yields.getProfitRate());
+            OutputView.printStatistics(yields.getRankCount(), yields.getProfitRate());
 
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
 
     }
 
