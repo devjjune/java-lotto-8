@@ -10,6 +10,7 @@ public class Service {
     private WinningLotto winningLotto;
 
     public Lottos purchaseLottos(String purchaseAmount) {
+        Validator.validatePurchaseAmount(purchaseAmount);
         return new Lottos(purchaseAmount);
     }
 
