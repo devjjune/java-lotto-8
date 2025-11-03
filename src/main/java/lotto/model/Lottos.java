@@ -21,10 +21,10 @@ public class Lottos {
     }
 
     private List<List<Integer>> issueLottos(int lottoAmount) {
-        LottoGenerator lottoGenerator = new LottoGenerator();
         List<List<Integer>> issuedLottos = new ArrayList<>();
 
         for (int i = 0; i < lottoAmount; i++) {
+            LottoGenerator lottoGenerator = new LottoGenerator();
             List<Integer> randomNumbers = lottoGenerator.getRandomNumbers();
             Collections.sort(randomNumbers);
             issuedLottos.add(new ArrayList<>(randomNumbers));

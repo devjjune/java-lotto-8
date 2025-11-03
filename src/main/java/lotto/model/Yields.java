@@ -28,6 +28,7 @@ public class Yields {
             boolean hasBonus = (boolean) result.get("hasBonus");
 
             WinningRank rank = WinningRank.of(matchedCount, hasBonus);
+            if (rank == null) continue;
             rankCount.put(rank, rankCount.getOrDefault(rank, 0) + 1);
         }
 
