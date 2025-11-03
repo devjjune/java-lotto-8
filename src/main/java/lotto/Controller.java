@@ -18,15 +18,16 @@ public class Controller {
         String purchaseAmount = InputView.readPurchaseAmount();
 
         Lottos lottos = service.purchaseLottos(purchaseAmount);
-        OutputView.printIssuedLottos(issuedLottos);
+        OutputView.printIssuedLottos(lottos.getLottos());
 
         String winningNumber = InputView.readWinningNumber();
         String bonusNumber = InputView.readBonusNumber();
+
         WinningLotto winningLotto = service.drawWinningLotto(winningNumber, bonusNumber);
 
         Yields yields = service.calculateResults(purchaseAmount, lottos, winningLotto);
 
-        OutputView.printStatistics(results, profitRate);
+        OutputView.printStatistics(yields.getRankCount(), yields.getProfitRate());
 
 
     }
