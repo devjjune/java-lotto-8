@@ -1,23 +1,23 @@
 package lotto;
 
-import lotto.model.Lotto;
-import lotto.model.WinningLotto;
-import lotto.model.WinningRank;
+import lotto.model.*;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
 import java.util.List;
 import java.util.Map;
 
-import lotto.model.Yields;
-
 public class Controller {
-    public static void run() {
+    private final Service service;
+
+    public Controller(Service service) {
+        this.service = service;
+    }
+
+    public void run() {
         String purchaseAmount = InputView.readPurchaseAmount();
 
-        int lottoAmount = Lotto.calculateLottoAmount(purchaseAmount);
-        List<Integer> randomNumbers = Lotto.pickRandomNumbers();
-        List<List<Integer>> issuedLottos = Lotto.issueLottos(lottoAmount, randomNumbers);
+        Lottos lottos = Service.purchaseLottos(purchaseAmount);
         OutputView.printIssuedLottos(issuedLottos);
 
         String winningNumber = InputView.readWinningNumber();
